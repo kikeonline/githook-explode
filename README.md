@@ -1,5 +1,6 @@
 # githook-explode
 [githooks](https://git-scm.com/docs/githooks) - pre-receive: Script that gets excecuted when the server receives a push. Can be use to stop or accept new commits.
+
 <img src="https://github.com/kikeonline/githook-explode/blob/master/githook-explode.png" width="600">
 
 # Instalation
