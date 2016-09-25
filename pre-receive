@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#colors
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+no_color='\033[0m'
+
+while read oldrev newrev refname; do
+  msg=`git log --format=%s -1 $newrev`
+  msgcount=${#msg}
+  #Set the minimum characters
+  msgmin=50
+  echo -e "${yellow}"
+  echo "$msg"
+  echo "Your commit message has $msgcount characters."
+  echo -e "${no_color}"
+  if (("$msgcount" < "$msgmin")); then
+    echo -e "${red}"
+    echo -e "BOOOMMM!. your commit message must have more then $msgmin characters.\nPikachu doenst approve." | boxes -d nuke
+    echo -e "${no_color}"
+    exit 255
+  else
+    echo -e "${green}"
+    echo -e "Commit message passed."
+    echo -e "${no_color}"
+  fi
+done
